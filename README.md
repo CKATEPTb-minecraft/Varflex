@@ -30,6 +30,7 @@ We use [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) to manag
 # How To
 
 * Fork this project
+* Allow github-actions on your fork
 * Open `settings.gradle.kts` and configure project name 
 * Open `build.gradle.kts` and follow todos
 * Open `./github/workflows/publish.yml` and follow todos or delete this workflow

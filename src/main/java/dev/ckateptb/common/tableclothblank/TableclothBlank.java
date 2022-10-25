@@ -1,4 +1,4 @@
-package dev.ckateptb.commons.tableclothblank;
+package dev.ckateptb.common.tableclothblank;
 
 public class TableclothBlank {
     public static void main(String[] args) {
