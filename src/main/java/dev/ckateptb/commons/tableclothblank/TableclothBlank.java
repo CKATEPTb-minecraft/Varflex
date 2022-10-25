@@ -1,0 +1,7 @@
+package dev.ckateptb.commons.tableclothblank;
+
+public class TableclothBlank {
+    public static void main(String[] args) {
+        System.out.println("Hello world!");
+    }
+}
