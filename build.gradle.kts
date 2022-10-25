@@ -60,9 +60,15 @@ tasks {
         dontoptimize()
     }
     build {
+        // Uncomment next line if u need only embed, without shrink
+//        dependsOn(shadowJar)
+        // Comment next line if u need only embed, without shrink
         dependsOn("shrink")
     }
     publish {
+        // Uncomment next line if u need only embed
+//        dependsOn(shadowJar)
+        // Comment next line if u need only embed, without shrink
         dependsOn("shrink")
     }
     withType<JavaCompile> {
