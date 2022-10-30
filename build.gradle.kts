@@ -14,9 +14,11 @@ plugins {
     id("maven-publish")
     id("com.github.johnrengelman.shadow").version("7.1.0")
     id("io.github.gradle-nexus.publish-plugin").version("1.1.0")
+    // https://github.com/PaperMC/paperweight
+    id("io.papermc.paperweight.userdev").version("1.3.8")
 }
 // TODO Change the group to the one you need
-group = "dev.ckateptb.common"
+group = "dev.ckateptb.minecraft"
 // TODO Control project version according to https://semver.org/spec/v2.0.0.html
 version = "1.0.0-SNAPSHOT"
 
@@ -30,6 +32,9 @@ repositories {
 }
 
 dependencies {
+    // TODO Configure papermc version
+    paperDevBundle("1.19.2-R0.1-SNAPSHOT")
+
     // TODO Using the line below you can add dependencies.
     //  Plus, instead of the version, it will give you the latest version.
 //    implementation("com.example.group:example-library:+")
@@ -61,18 +66,30 @@ tasks {
     }
     build {
         // Uncomment next line if u need only embed, without shrink
-//        dependsOn(shadowJar)
+//        dependsOn(reobfJar, shadowJar)
         // Comment next line if u need only embed, without shrink
-        dependsOn("shrink")
+        dependsOn(reobfJar, "shrink")
     }
     publish {
         // Uncomment next line if u need only embed
-//        dependsOn(shadowJar)
+//        dependsOn(reobfJar, shadowJar)
         // Comment next line if u need only embed, without shrink
-        dependsOn("shrink")
+        dependsOn(reobfJar, "shrink")
     }
     withType<JavaCompile> {
         options.encoding = "UTF-8"
+    }
+    named<Copy>("processResources") {
+        filesMatching("plugin.yml") {
+            expand(
+                "projectVersion" to project.version,
+                "projectName" to project.name,
+                "projectMainClass" to "${rootPackage}.${project.name}"
+            )
+        }
+        from("LICENSE") {
+            rename { "${project.name.toUpperCase()}_${it}" }
+        }
     }
 }
 

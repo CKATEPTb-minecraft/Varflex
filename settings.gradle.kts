@@ -1,3 +1,10 @@
-// TODO Change the project name to whatever you want
-rootProject.name = "TableclothBlank"
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven("https://papermc.io/repo/repository/maven-public/")
+    }
+}
+
+// TODO Change the plugin name to whatever you want
+rootProject.name = "TableclothPluginBlank"
 
