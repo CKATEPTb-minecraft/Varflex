@@ -17,6 +17,7 @@ plugins {
     // https://github.com/PaperMC/paperweight
     id("io.papermc.paperweight.userdev").version("1.3.8")
 }
+
 group = "dev.ckateptb.minecraft"
 version = "1.0.0-SNAPSHOT"
 
@@ -32,7 +33,7 @@ dependencies {
     paperDevBundle("1.19.2-R0.1-SNAPSHOT")
 
     implementation("dev.ckateptb.common:TableclothConfig:1.0.0-SNAPSHOT")
-    compileOnly("dev.ckateptb.minecraft:Nicotine:1.0.1-SNAPSHOT")
+    
     compileOnly("org.projectlombok:lombok:+")
     annotationProcessor("org.projectlombok:lombok:+")
 }

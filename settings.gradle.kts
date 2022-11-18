@@ -5,5 +5,5 @@ pluginManagement {
     }
 }
 
-rootProject.name = "Varflex"
 
+rootProject.name = "Varflex"
