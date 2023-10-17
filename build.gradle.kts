@@ -19,7 +19,7 @@ plugins {
 }
 
 group = "dev.ckateptb.minecraft"
-version = "1.0.2-SNAPSHOT"
+version = "1.1.0-SNAPSHOT"
 
 val rootPackage = "${project.group}.${project.name.toLowerCase()}"
 val internal = "${rootPackage}.internal"
@@ -40,7 +40,7 @@ dependencies {
 
 tasks {
     shadowJar {
-//        relocate("com", "${internal}.com")
+        relocate("org.spongepowered", "${internal}.org.spongepowered")
     }
     register<ProGuardTask>("shrink") {
         dependsOn(shadowJar)
@@ -59,15 +59,15 @@ tasks {
     }
     build {
         // Uncomment next line if u need only embed, without shrink
-//        dependsOn(reobfJar, shadowJar)
+        dependsOn(reobfJar, shadowJar)
         // Comment next line if u need only embed, without shrink
-        dependsOn(reobfJar, "shrink")
+//        dependsOn(reobfJar, "shrink")
     }
     publish {
         // Uncomment next line if u need only embed
-//        dependsOn(reobfJar, shadowJar)
+        dependsOn(reobfJar, shadowJar)
         // Comment next line if u need only embed, without shrink
-        dependsOn(reobfJar, "shrink")
+//        dependsOn(reobfJar, "shrink")
     }
     withType<JavaCompile> {
         options.encoding = "UTF-8"
